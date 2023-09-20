@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  lims_ng:
+    restart: always
+    container_name: nginx-angular-example
+    image: angular-test:0.0.1
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 9000:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d:rw
+      - ./logs:/etc/nginx/logs
+    networks:
+      - networkintegration
+
+networks:
+  networkintegration:
+    driver: bridge

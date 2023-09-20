@@ -1,0 +1,13 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    server_name localhost;
+
+    index index.html index.htm;
+
+    location /angular-test/ {
+        try_files $uri $uri/ /index.html;
+    }
+}
